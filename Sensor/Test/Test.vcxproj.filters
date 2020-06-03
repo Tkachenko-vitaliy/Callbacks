@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Test Files">
+      <UniqueIdentifier>{86ff2434-5494-453d-a620-e144ce43bb4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include files">
+      <UniqueIdentifier>{2de65e17-e0d3-4d3e-bf07-bb2b41f73586}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Test.cpp">
+      <Filter>Test Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestControl.cpp">
+      <Filter>Test Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLibrary.cpp">
+      <Filter>Test Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Test.h">
+      <Filter>Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ControlInterface.h">
+      <Filter>Include files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\DriverInterface.h">
+      <Filter>Include files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Errors.h">
+      <Filter>Include files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\SensorDef.h">
+      <Filter>Include files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\DriverImpl.h">
+      <Filter>Include files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
