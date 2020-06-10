@@ -23,7 +23,7 @@ int main()
     // Pointer to the static method 
     initiator.setup(CallbackConverter<void(*)(int, Executor*), Executor*>(Executor::staticCallbackHandler, &executor));
 
-    // Pointer to the class nember method 
+    // Pointer to the class member method 
     initiator.setup(CallbackConverter<Executor, void(Executor::*)(int)>(&executor, &Executor::callbackHandler));
 
     // Functional object
