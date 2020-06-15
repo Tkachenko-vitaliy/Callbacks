@@ -30,9 +30,9 @@ int main()
 
     // (14) Pointer to the class member method
     using PtrMethod = void(Executor::*)(int); // (15)
-    using CallbackMemberMethod = CallbackConverter<Executor, void(Executor::*)(int)>; // (16)
+    using CallbackMemberMethod = CallbackConverter<void(Executor::*)(int), Executor>; // (16)
     Initiator<CallbackMemberMethod> initMemberMethod; // (17)
-    initMemberMethod.setup(CallbackMemberMethod(&executor, &Executor::callbackHandler)); // (18)
+    initMemberMethod.setup(CallbackMemberMethod(&Executor::callbackHandler , &executor)); // (18)
 
     // (19) Functional object 
     Initiator<Executor> initFunctionObject; // (20)

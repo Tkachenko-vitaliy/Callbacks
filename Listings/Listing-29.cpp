@@ -32,8 +32,8 @@ int main()
 
     // (4) Member merthod
     using MethodPointer = void(Executor::*)(int);
-    using MethodConverter = CallbackConverter<Executor, MethodPointer>;
-    run(MethodConverter(&executor, &Executor::callbackHandler));
+    using MethodConverter = CallbackConverter<MethodPointer, Executor>;
+    run(MethodConverter(&Executor::callbackHandler, &executor));
 
     // (5) Functional object
     run(executor);

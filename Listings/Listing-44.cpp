@@ -24,8 +24,7 @@ int main()
     initStaticMethod.setup(CallbackConverter<void(*)(int, Executor*), Executor*>(Executor::staticCallbackHandler, &executor));
 
     // (14) Pointer to the class member method
-    Initiator<CallbackConverter<Executor, void(Executor::*)(int)>> initMemberMethod;
-    initMemberMethod.setup(CallbackConverter<Executor, void(Executor::*)(int)>
-    (&executor, &Executor::callbackHandler));
+    Initiator<CallbackConverter<void(Executor::*)(int), Executor>> initMemberMethod;
+    initMemberMethod.setup(CallbackConverter<void(Executor::*)(int), Executor> (&Executor::callbackHandler , &executor));
 
 }

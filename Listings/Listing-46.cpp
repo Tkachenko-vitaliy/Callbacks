@@ -24,7 +24,8 @@ int main()
     using PtrStaticMethod = void(*) (int, Executor*);
     argument = CallbackConverter<PtrStaticMethod, Executor*>(Executor::staticCallbackHandler, &executor); // (2)
 
-    argument = CallbackConverter<Executor, void(Executor::*)(int)>(&executor, &Executor::callbackHandler); // (3)
+    using PtrMemberMethod = void(Executor::*)(int);
+    argument = CallbackConverter<PtrMemberMethod, Executor>(&Executor::callbackHandler, &executor); // (3)
 
     argument = executor; // (4)
 
