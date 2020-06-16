@@ -1,19 +1,19 @@
-#include "Listing-48.h"
-#include "Listing-50.h"
+#include <functional>
 
-class FO // (1)
-{
-public:
-    void callbackHandler(int eventID) {};
-};
+void External(int eventID) {};
 
 int main()
 {
-    int eventID = 0;
-    FO fo;
+    struct Call
+    {
+        void operator() (int eventID) {};
+    } objectCall;
 
-    UniArgument<void(int)> argument; // (2)
-    CallbackToClass<FO, void(int)> cb2cl(&fo, &FO::callbackHandler); // (3)
-    argument = cb2cl; // (4)
-    argument(eventID); // (5)
+    std::function<void(int)> fnt;
+
+    fnt = External;
+    fnt = objectCall;
+    fnt = [](int evetID) {};
+
+    fnt(0);
 }

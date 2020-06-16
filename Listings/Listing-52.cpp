@@ -1,19 +1,17 @@
 #include <functional>
 
-void External(int eventID);
-
 int main()
 {
-    struct Call
-    {
-        void operator() (int eventID) {};
-    } objectCall;
-
     std::function<void(int)> fnt;
 
-    fnt = External;
-    fnt = objectCall;
-    fnt = [](int evetID) {};
+    fnt(0); //Error: argument is not set. Exception will be thrown
 
-    fnt(0);
+    fnt = [](int) {};
+    fnt(0); //Ok, argument is set
+
+    //Check if the argument is set
+    if (fnt)
+    {
+        fnt(0);
+    }
 }

@@ -2,23 +2,24 @@
 
 #include <functional>
 
-class Initiator  // (1)
+template<typename Function, typename Context, typename others>  // (0)
+class CallbackConverter;
+
+template<typename Function, typename Context, typename Return, typename ... ArgumentList>  // 1)
+class CallbackConverter<Function, Context, Return(ArgumentList...)>  // (2)
 {
 public:
-    template<typename CallbackArgument>
-    void setup(const CallbackArgument& argument) // (2)
+    CallbackConverter(Function argFunction = nullptr, Context argContext = nullptr)  // (3)
     {
-        callbackHandler = argument;
+        ptrFunction = argFunction; context = argContext;
     }
 
-    void run()
+    Return operator() (ArgumentList... arguments)         // (4)
     {
-        int eventID = 0;
-        //Some actions
-        callbackHandler(eventID);
+        std::invoke(ptrFunction, context, arguments...);  // (5)   
     }
-
 private:
-    std::function<void(int)> callbackHandler;  // (3)
+    Function ptrFunction;      // (6)
+    Context context;           // (7)
 };
 

@@ -27,10 +27,7 @@ int main()
     run(CallbackConverter<void(*)(int, Executor*), Executor*>(Executor::staticCallbackHandler, &executor));
 
     // (4) Member merthod
-    run(CallbackConverter<Executor, void(Executor::*)(int)>(&executor, &Executor::callbackHandler));
-
-    // (5) Functional object
-    run(executor);
+    run(CallbackConverter<void(Executor::*)(int), Executor>(&Executor::callbackHandler , &executor));
 
     // (6) lambda-expression
     run([capturedValue](int eventID) {/*it will be called by initiator*/});
