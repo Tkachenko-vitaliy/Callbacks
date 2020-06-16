@@ -1,5 +1,6 @@
-#include "Listing-50.h"
 #include "Listing-65.h"
+
+#include <functional>
 
 void ExternalHandler(int eventID) // (1)
 {
@@ -13,10 +14,11 @@ struct FO
 
 int main()
 {
+    using namespace std::placeholders;
 
     FO fo;  // (2)
     auto lambda = [](int eventID) {};  // (3)
-    CallbackToClass<FO, void(int)> cb2cl(&fo, &FO::callbackHandler);  // (4)
+    auto cb2cl = std::bind(&FO::callbackHandler, fo, _1);  // (4)
 
     int eventID = 0;  // (5)
 

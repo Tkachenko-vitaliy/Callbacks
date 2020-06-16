@@ -1,7 +1,8 @@
-#include "Listing-50.h"
 #include "Listing-68.h"
 #include "Listing-69.h"
 #include "Listing-70.h"
+
+#include <functional>
 
 void ExternalHandler(int eventID, int contextID) // (1)
 {
@@ -15,11 +16,12 @@ struct FO
 
 int main()
 {
+    using namespace std::placeholders;
     int eventID = 0, contextID = 1;  // (1)
 
     FO fo;
     auto lambda = [](int eventID, int contextID) {};
-    CallbackToClass<FO, void(int, int)> cb2cl(&fo, &FO::callbackHandler);
+    auto cb2cl = std::bind(&FO::callbackHandler, fo, _1, _2);
 
     Distribute1(std::tuple(eventID, contextID), ExternalHandler, fo, cb2cl, lambda);
     Distribute2(std::tuple(ExternalHandler, fo, cb2cl, lambda), eventID, contextID);
