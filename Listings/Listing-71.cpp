@@ -17,7 +17,7 @@ struct FO
 int main()
 {
     using namespace std::placeholders;
-    int eventID = 0, contextID = 1;  // (1)
+    int eventID = 0, contextID = 1;
 
     FO fo;
     auto lambda = [](int eventID, int contextID) {};
