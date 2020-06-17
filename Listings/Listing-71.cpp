@@ -4,7 +4,7 @@
 
 #include <functional>
 
-void ExternalHandler(int eventID, int contextID) // (1)
+void ExternalHandler(int eventID, int contextID)
 {
 }
 
