@@ -15,7 +15,7 @@ void Call(CallData& data, First& first, Others&...rest)  // (2)
 }
 
 template <typename... CallData, typename... CallObjects>
-void Distribute1(std::tuple<CallData...> data, CallObjects... objects) // (5)
+void Distribute1(std::tuple<CallData...> data, CallObjects... objects)  // (5)
 
 {
     Call(data, objects...);  // (6)
