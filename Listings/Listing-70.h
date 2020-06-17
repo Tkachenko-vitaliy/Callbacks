@@ -21,7 +21,7 @@ struct TupleIterator3<0, CallObjects, CallData>    // (7)
     }
 };
 
-template<typename... CallObjects, typename... CallData>  // (9)
+template<typename... CallObjects, typename... CallData>                                     // (9)
 void Distribute3(std::tuple<CallObjects...> callObjects, std::tuple<CallData...> callData)  // (10)
 {
     TupleIterator3                   // (11) 
