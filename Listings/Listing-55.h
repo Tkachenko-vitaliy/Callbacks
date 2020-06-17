@@ -2,12 +2,12 @@
 
 #include "Listing-54.h"
 
-template<typename MemberType, typename ClassType, typename Return, typename...ArgumentList>  // (1) 
-class CallbackConverter<MemberType ClassType::*, ClassType, Return(ArgumentList...)>  // (2) 
+template<typename ClassType, typename Return, typename...ArgumentList>  // (1) 
+class CallbackConverter<Return(ClassType::*)(ArgumentList...)>          // (2) 
 {
 public:
 
-    using MemberPointer = MemberType ClassType::*;
+    using MemberPointer = Return(ClassType::*)(ArgumentList...);  // (3)
 
     CallbackConverter(MemberPointer methodPointer = nullptr, ClassType* classPointer = nullptr)  // (4) 
     {
@@ -19,7 +19,8 @@ public:
         (ptrClass->*ptrMethod)(arguments...);     // (6) 
     }
 private:
-    ClassType* ptrClass;                // (7) 
-    MemberPointer ptrMethod;            // (8) 
+    ClassType* ptrClass;      // (7) 
+    MemberPointer ptrMethod;  // (8) 
 };
+
 

@@ -2,24 +2,27 @@
 
 #include <functional>
 
-template<typename Function, typename Context, typename others>  // (0)
+template<typename unused>  // (1)
 class CallbackConverter;
 
-template<typename Function, typename Context, typename Return, typename ... ArgumentList>  // 1)
-class CallbackConverter<Function, Context, Return(ArgumentList...)>  // (2)
+template<typename Context, typename Return, typename ... ArgumentList>  // (2)
+class CallbackConverter<Return(Context, ArgumentList...)>               // (3)
 {
 public:
-    CallbackConverter(Function argFunction = nullptr, Context argContext = nullptr)  // (3)
+
+    using Function = Return(*)(Context, ArgumentList...);  // (4)
+
+    CallbackConverter(Function argFunction = nullptr, Context argContext = nullptr)  // (5)
     {
         ptrFunction = argFunction; context = argContext;
     }
 
-    Return operator() (ArgumentList... arguments)         // (4)
+    Return operator() (ArgumentList... arguments)         // (6)
     {
-        std::invoke(ptrFunction, context, arguments...);  // (5)   
+        ptrFunction(context, arguments...);               // (7)   
     }
 private:
-    Function ptrFunction;      // (6)
-    Context context;           // (7)
+    Function ptrFunction;          // (8)
+    Context context;               // (9)
 };
 

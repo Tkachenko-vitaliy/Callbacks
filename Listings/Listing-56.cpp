@@ -1,5 +1,5 @@
 #include "Listing-53.h"
-#include "Listing-54.h"
+#include "Listing-55.h"
 
 class Executor
 {
@@ -18,16 +18,13 @@ int main()
     Executor executor;
 
     // Pointer to the external function
-    using PtrExtFunc = void(*) (void*, int);
-    initiator.setup(CallbackConverter<PtrExtFunc, void*, void(int)>(ExternalHandler, &executor));
+    initiator.setup(CallbackConverter<void(void*, int)>(ExternalHandler, &executor));
 
     // Pointer to the static method 
-    using PtrStaticMethod = void(*) (Executor*, int);
-    initiator.setup(CallbackConverter<PtrStaticMethod, Executor*, void(int)>(Executor::staticCallbackHandler, &executor));
+    initiator.setup(CallbackConverter<void(Executor*, int)>(Executor::staticCallbackHandler, &executor));
 
     // Pointer to the class member method 
-    using PtrMember = void(Executor::*)(int);
-    initiator.setup(CallbackConverter<PtrMember, Executor*, void(int)>(&Executor::callbackHandler, &executor));
+    initiator.setup(CallbackConverter<void(Executor::*)(int)>(&Executor::callbackHandler, &executor));
 
     // Functional object
     initiator.setup(executor);
