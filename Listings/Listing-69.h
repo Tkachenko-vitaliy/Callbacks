@@ -2,7 +2,7 @@
 
 #include <tuple>
 
-template<std::size_t Index, typename CallObjects, typename... CallData> // (1)
+template<std::size_t Index, typename CallObjects, typename... CallData>  // (1)
 struct TupleIterator
 {
     static void IterateTupleItem(CallObjects& callObjects, CallData...callData)  // (2)
@@ -22,7 +22,7 @@ struct TupleIterator<0, CallObjects, CallData...>  // (7)
 };
 
 template<typename... CallObjects, typename... CallData>  // (9)
-void Distribute2(std::tuple<CallObjects...> callObjects, CallData... callData) // (10)
+void Distribute2(std::tuple<CallObjects...> callObjects, CallData... callData)  // (10)
 {
     TupleIterator  // (11) 
         <
