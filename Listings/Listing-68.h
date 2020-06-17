@@ -11,7 +11,7 @@ template <typename CallData, typename First, typename...Others>
 void Call(CallData& data, First& first, Others&...rest)  // (2)
 {
     std::apply(first, data);  // (3)
-    Call(data, rest...);  // (4)
+    Call(data, rest...);      // (4)
 }
 
 template <typename... CallData, typename... CallObjects>
