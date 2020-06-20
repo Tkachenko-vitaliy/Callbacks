@@ -28,10 +28,10 @@ int main()
 
     auto results = DistributeReturn(std::tuple(fo, ExternalHandler, lambda), eventID);  // (1)
 
-    int foRes = std::get<0>(results);  // (2)
-    SResult ExtRes = std::get<1>(results);  // (3)
-    double lambdaRes = std::get<2>(results); // (4)
+    int foRes = std::get<0>(results);         // (2)
+    SResult ExtRes = std::get<1>(results);    // (3)
+    double lambdaRes = std::get<2>(results);  // (4)
 
     auto [foRes1, ExtRes1, lambdaRes1] = results; // (5)
-    auto [foRes2, ExtRes2, lambdaRes2] = DistributeReturn(std::tuple(fo, ExternalHandler, lambda), eventID);//(6)
+    auto [foRes2, ExtRes2, lambdaRes2] = DistributeReturn(std::tuple(fo, ExternalHandler, lambda), eventID); //(6)
 }
