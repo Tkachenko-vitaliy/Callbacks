@@ -12,8 +12,8 @@ public:
     StaticDistributor(CallObjects... objects) : callObjects(objects...) {}  // (2)
     auto& tuple() { return callObjects; }  // (3)
 
-    template<typename... CallData>  // (4)
-    auto operator() (CallData... callData)
+    template<typename... CallData>  
+    auto operator() (CallData... callData)  // (4)
     {
         if constexpr (ShouldReturnValue)  // (5)
             return DistributeReturn(callObjects, callData...);
