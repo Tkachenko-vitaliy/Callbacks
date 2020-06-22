@@ -5,7 +5,7 @@
 
 #include <tuple>
 
-template<bool ShouldReturnValue, typename... CallObjects> // (1)
+template<bool ShouldReturnValue, typename... CallObjects>  // (1)
 class StaticDistributor
 {
 public:
@@ -15,9 +15,9 @@ public:
     template<typename... CallData>  // (4)
     auto operator() (CallData... callData)
     {
-        if constexpr (ShouldReturnValue) // (5)
+        if constexpr (ShouldReturnValue)  // (5)
             return DistributeReturn(callObjects, callData...);
-        else // (6)
+        else                              // (6)
             return Distribute2(callObjects, callData...);
     }
 private:
