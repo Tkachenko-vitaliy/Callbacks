@@ -27,7 +27,7 @@ int main()
     auto lambda = [](int eventID) { return 0.0; };
     auto callbackToMethod = std::bind(&FO::callbackHandler, fo, std::placeholders::_1);
 
-    StaticDistributorReturn distributor(ExternalHandler, fo, callbackToMethod, lambda); // (1)
+    StaticDistributorReturn distributor(ExternalHandler, fo, callbackToMethod, lambda);  // (1)
 
-    auto [resExtHandler, resFoOperator, resFoMethod, resLambda] = distributor(eventID); // (2)
+    auto [resExtHandler, resFoOperator, resFoMethod, resLambda] = distributor(eventID);  // (2)
 }
