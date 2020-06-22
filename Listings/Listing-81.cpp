@@ -40,9 +40,9 @@ int main()
     using FunPtrVoid = void(*)(int);
     using LambdaTypeVoid = decltype(lambdaVoid);
 
-    StaticDistributor<true, FOReturn, FunPtrRet, LambdaTypeRet>  distributor1(foRet, ExternalReturn, lambdaRet); // (1)
-    StaticDistributor<false, FOVoid, FunPtrVoid, LambdaTypeVoid>  distributor2(foVoid, ExternalVoid, lambdaVoid); // (2)
-    StaticDistributor<false, FOReturn, FunPtrRet, LambdaTypeRet>  distributor3(foRet, ExternalReturn, lambdaRet); // (3)
+    StaticDistributor<true, FOReturn, FunPtrRet, LambdaTypeRet>  distributor1(foRet, ExternalReturn, lambdaRet);   // (1)
+    StaticDistributor<false, FOVoid, FunPtrVoid, LambdaTypeVoid>  distributor2(foVoid, ExternalVoid, lambdaVoid);  // (2)
+    StaticDistributor<false, FOReturn, FunPtrRet, LambdaTypeRet>  distributor3(foRet, ExternalReturn, lambdaRet);  // (3)
 
     auto results = distributor1(eventID);
     distributor2(eventID);
