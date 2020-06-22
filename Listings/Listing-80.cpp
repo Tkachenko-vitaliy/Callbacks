@@ -29,7 +29,7 @@ int main()
     using funptr_type = SResult(*)(int);
     using lambda_type = decltype(lambda);
 
-    StaticDistributorVoid <FO, funptr_type, lambda_type> distributor1(fo, ExternalHandler, lambda); // (1)
+    StaticDistributorVoid <FO, funptr_type, lambda_type> distributor1(fo, ExternalHandler, lambda);  // (1)
 
-    StaticDistributorVoid distributor2(fo, ExternalHandler, lambda); // (2)
+    StaticDistributorVoid distributor2(fo, ExternalHandler, lambda);  // (2)
 }
