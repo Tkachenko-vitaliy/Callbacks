@@ -8,8 +8,8 @@ template<typename Return, typename... ArgumentList>  // (2)
 class DynamicDistributor<Return(ArgumentList...)>
 {
 public:
-    template <typename CallObject>  // (3)
-    void addCallObject(CallObject object)
+    template <typename CallObject>  
+    void addCallObject(CallObject object)  // (3)
     {
         callObjects.push_back(object);
     }
