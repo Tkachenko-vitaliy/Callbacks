@@ -19,15 +19,15 @@ int main()
     auto lambda = [](int eventID) { return 0; };
     auto binding = std::bind(&FO::callbackHandler, fo, std::placeholders::_1);
 
-    DynamicDistributor<int(int)> distributor;  // (1)
+    DynamicDistributor<int(int)> distributor;    // (1)
 
-    distributor.addCallObject(fo);  // (2)
+    distributor.addCallObject(fo);               // (2)
     distributor.addCallObject(ExternalHandler);  // (3)
-    distributor.addCallObject(binding);  // (4)
-    distributor.addCallObject(lambda);  // (5)
+    distributor.addCallObject(binding);          // (4)
+    distributor.addCallObject(lambda);           // (5)
 
     distributor(eventID); // (6)
 
     auto onReturnValue = [](int callResult) {};  // (7)
-    distributor(onReturnValue, eventID);  // (8)
+    distributor(onReturnValue, eventID);         // (8)
 }
