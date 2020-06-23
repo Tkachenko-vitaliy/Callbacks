@@ -3,19 +3,19 @@
 #include <list>
 #include <functional>
 
-template<typename unused> class DynamicDistributor; // (1)
+template<typename unused> class DynamicDistributor; 
 
 template <typename Return, typename... ArgumentList>
 class DynamicDistributor<Return(ArgumentList...)>
 {
 public:
-    template <typename CallObject> // (3)
+    template <typename CallObject> 
     void addCallObject(CallObject object)
     {
         callObjects.push_back(object);
     }
 
-    void operator ()(ArgumentList... arguments) // (4)
+    void operator ()(ArgumentList... arguments)
     {
         for (auto& callObject : callObjects)
         {
@@ -23,12 +23,12 @@ public:
         }
     }
 
-    template<typename CallbackReturn > // (1)
+    template<typename CallbackReturn >  // (1)
     void operator()(CallbackReturn callbackReturn, ArgumentList... arguments)
     {
         for (auto& callObject : callObjects)
         {
-            callbackReturn(callObject(arguments...)); // (2)
+            callbackReturn(callObject(arguments...));  // (2)
         }
     }
 private:
