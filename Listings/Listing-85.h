@@ -4,9 +4,9 @@
 #include <functional>
 #include <stdexcept>
 
-template <typename Address, typename AddressCompare, typename Function> class AddressDistributor; // (1)
+template <typename Address, typename AddressCompare, typename Function> class AddressDistributor;  // (1)
 
-template <typename Address, typename AddressCompare, typename Return, typename... ArgumentList>  // (2)
+template <typename Address, typename AddressCompare, typename Return, typename... ArgumentList>    // (2)
 class AddressDistributor<Address, AddressCompare, Return(ArgumentList...)>  // (3)
 {
 public:
