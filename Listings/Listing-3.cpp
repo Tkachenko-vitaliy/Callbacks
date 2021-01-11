@@ -1,20 +1,22 @@
 #include "Listing-0.h"
 
-struct ÑontextData  // (1)
+struct ContextData  // (1)
 {
     //some context data
 };
 
-void callbackHandler(int eventID, void* somePointer)  // (2) 
+void callbackHandler(int eventID, void* somePointer)        // (2) 
 {
     //It will be called by initiator
-    ÑontextData* pContextData = (ÑontextData*)somePointer;   // (3) 
+    ContextData* pContextData = (Ã‘ontextData*)somePointer;  // (3) 
+    //Do something here
+
 }
 
-int main()  // (4)
+int main()                                   // (4)
 {
-    ÑontextData clientContext;  // (5)
+    ContextData clientContext;               // (5)
     setup(callbackHandler, &clientContext);  // (6) 
-    run(); // (7) 
+    run();                                   // (7) 
     //Wait finish
 }
