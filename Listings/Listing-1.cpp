@@ -5,7 +5,7 @@ void* contextData = NULL;              // (3)
 
 void setup(ptr_callback pPtrCallback, void* pContextData)  // (4)
 {
-    ptrCallback = ptrCallback;
+    ptrCallback = pPtrCallback;
     contextData = pContextData;
 }
 
