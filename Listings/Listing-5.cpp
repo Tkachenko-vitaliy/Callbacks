@@ -2,7 +2,7 @@
 
 using ptr_callback = void(*) (int, void*);
 
-void run(ptr_callback ptrCallback, void* contextData = NULL)
+void run(ptr_callback ptrCallback, void* contextData = nullptr)
 {
     int eventID = 0;
     //Some actions
