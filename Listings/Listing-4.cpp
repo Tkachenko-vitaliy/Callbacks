@@ -15,7 +15,7 @@ void callbackHandler(int eventID, void* somePointer)                    // (2)
 int main() // (4)
 {
     Initiator  initiator;                             // (5)
-    ÑontextData clientContext;                        // (6)
+    ContextData clientContext;                        // (6)
     initiator.setup(callbackHandler, &clientContext); // (7) callback setup 
     initiator.run(); // (8) initiator has been run
     //Wait finish
