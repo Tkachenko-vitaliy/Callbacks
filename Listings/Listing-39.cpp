@@ -2,7 +2,7 @@ int main()
 {
     [](int eventID) {/*this is a body of lambda*/};  // (1)
 
-    //This object will be generated implicitly by the compiler from lambda declaration
+    //The following object will be generated implicitly by the compiler from lambda declaration
     class Closure // (2)
     {
     public:
@@ -28,5 +28,4 @@ int main()
 
     //Conversion a lambda to the function pointer
     fptr = [](int eventID) {/*this is a body of lambda*/}; // (10)
-
 }
