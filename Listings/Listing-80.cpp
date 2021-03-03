@@ -7,7 +7,7 @@ struct FOReturn
 
 struct FOVoid
 {
-    void operator() (int eventID) {  }
+    void operator() (int eventID) {  /*do something*/ }
 };
 
 struct SResult
