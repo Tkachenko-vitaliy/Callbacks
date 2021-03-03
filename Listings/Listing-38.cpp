@@ -3,7 +3,7 @@ int main()
     int capture = 0;
     [capture](int eventID) {/*this is a body of lambda*/};
 
-    //This object will be generated implicitly by the compiler from lambda declaration
+    //The following object will be generated implicitly by the compiler from lambda declaration
     class Closure
     {
     public:
