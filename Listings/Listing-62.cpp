@@ -2,12 +2,12 @@
 
 void NativeHandler(int eventID)
 {
-    //eventID = 10
+    //here eventID is 10
 }
 
 void AnotherHandler(int contextID, int eventID)
 {
-    //eventID = 10, contextID = 1;
+    //here eventID is 10, contextID is 1;
 }
 
 int main()
