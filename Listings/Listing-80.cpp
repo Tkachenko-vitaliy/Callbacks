@@ -1,12 +1,13 @@
-#include "Listing-69.h"
-#include "Listing-75.h"
+#include "Listing-79.h"
 
-#include <tuple>
-
-struct FO
+struct FOReturn
 {
     int operator() (int eventID) { return 10; }
-    int callbackHandler(int eventID) { return 0; }
+};
+
+struct FOVoid
+{
+    void operator() (int eventID) {  /*do something*/ }
 };
 
 struct SResult
@@ -15,21 +16,33 @@ struct SResult
     const char* description;
 };
 
-SResult ExternalHandler(int eventID)
+SResult ExternalReturn(int eventID)
 {
     return SResult{ 1, "this is an error" };
 }
 
+void ExternalVoid(int eventID)
+{
+}
+
 int main()
 {
-    FO fo;
     int eventID = 0;
-    auto lambda = [](int eventID) { return 0.0; };
 
-    using funptr_type = SResult(*)(int);
-    using lambda_type = decltype(lambda);
+    FOReturn foRet;
+    FOVoid   foVoid;
 
-    StaticDistributorVoid <FO, funptr_type, lambda_type> distributor1(fo, ExternalHandler, lambda);  // (1)
+    auto lambdaRet = [](int eventID) { return 0.0; };
+    auto lambdaVoid = [](int eventID) {};
 
-    StaticDistributorVoid distributor2(fo, ExternalHandler, lambda);  // (2)
+    using FunPtrRet = SResult(*)(int);
+    using LambdaTypeRet = decltype(lambdaRet);
+    using FunPtrVoid = void(*)(int);
+    using LambdaTypeVoid = decltype(lambdaVoid);
+
+    StaticDistributor<FOReturn, FunPtrRet, LambdaTypeRet>  distributor1(foRet, ExternalReturn, lambdaRet);  // (1)
+    StaticDistributor<FOVoid, FunPtrVoid, LambdaTypeVoid>  distributor2(foVoid, ExternalVoid, lambdaVoid);  // (2)
+
+    auto results = distributor1(eventID);
+    distributor2(eventID);
 }
